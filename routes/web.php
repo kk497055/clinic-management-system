@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\ServiceController;
+use App\Http\Controllers\Backend\Setup\ServiceFeeCategoryController;
 
 
 /*
@@ -48,6 +50,27 @@ Route::prefix('profile')->group(function(){
     Route::get('/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
     Route::post('/store', [ProfileController::class, 'ProfileStore'])->name('profile.store');
     Route::get('/password/view', [ProfileController::class, 'PasswordView'])->name('password.view');
+    
+    
+
+});
+
+// Setup Management
+
+Route::prefix('setup')->group(function(){
+
+    Route::get('/services/view', [ServiceController::class, 'ServiceView'])->name('services.view');
+    Route::get('/services/add', [ServiceController::class, 'ServiceAdd'])->name('services.add');
+    Route::post('/services/store', [ServiceController::class, 'ServiceStore'])->name('services.store');
+    Route::get('/services/edit/{id}', [ServiceController::class, 'ServiceEdit'])->name('services.edit');
+    Route::post('/services/update/{id}', [ServiceController::class, 'ServiceUpdate'])->name('services.update');
+    Route::get('/services/delete/{id}', [ServiceController::class, 'ServiceDelete'])->name('services.delete');
+    
+    
+// service fee category
+
+Route::get('/services/fee/category/view', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryView'])->name('servicesfeecategory.view');
+Route::get('/services/fee/category/add', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryAdd'])->name('servicesfeecategory.add');
     
 
 });
