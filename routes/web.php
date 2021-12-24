@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\ServiceController;
 use App\Http\Controllers\Backend\Setup\ServiceFeeCategoryController;
+use App\Http\Controllers\Backend\Setup\ServiceFeeAmountController;
 
 
 /*
@@ -71,6 +72,13 @@ Route::prefix('setup')->group(function(){
 
 Route::get('/services/fee/category/view', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryView'])->name('servicesfeecategory.view');
 Route::get('/services/fee/category/add', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryAdd'])->name('servicesfeecategory.add');
-    
+Route::post('/services/fee/category/store', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryStore'])->name('servicesfeecategory.store');  
+Route::get('/services/fee/category/edit/{id}', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryEdit'])->name('servicesfeecategory.edit');  
+Route::post('/services/fee/category/update/{id}', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryUpdate'])->name('servicesfeecategory.update');  
+Route::get('/services/fee/category/delete/{id}', [ServiceFeeCategoryController::class, 'ServiceFeeCategoryDelete'])->name('servicesfeecategory.delete');  
+
+// service fee amount
+
+Route::get('/services/fee/amount/view', [ServiceFeeAmountController::class, 'ServiceFeeAmountView'])->name('servicesfeeamount.view');
 
 });

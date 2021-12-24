@@ -14,7 +14,7 @@
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="{{ asset('backend/images/logo-dark.png')}}" alt="">
-						  <h3><b>Clinic</b> Admin</h3>
+						  <h3><b>Easy</b> ERP</h3>
 					 </div>
 				</a>
 			</div>
@@ -58,7 +58,7 @@
           </ul>
         </li>
 		
-        <li class="treeview {{ ($prefix == '/setup')?'active':''}}"">
+        <li class="treeview {{ ($prefix == '/setup')?'active':''}}">
             <a href="#">
               <i data-feather="mail"></i> <span>Setup Management</span>
               <span class="pull-right-container">
@@ -68,10 +68,10 @@
             <ul class="treeview-menu">
               <li><a href="{{ route('services.view')}}"><i class="ti-more"></i>Services</a></li>
               <li><a href="{{ route('servicesfeecategory.view')}}"><i class="ti-more"></i>Service Fee Categories</a></li>
-              
+              <li><a href="{{ route('servicesfeeamount.view')}}"><i class="ti-more"></i>Service Fee Amounts</a></li>
              
             </ul>
-          </li>
+        </li>
 		  
         <li class="treeview">
           <a href="#">

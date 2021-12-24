@@ -5,7 +5,7 @@
 			<a class="nav-link" href="javascript:void(0)">FAQ</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">AK School Management System</a>
+			<a class="nav-link" href="#">Easy Clinic Management System</a>
 		  </li>
 		</ul>
     </div>

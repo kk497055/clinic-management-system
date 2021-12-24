@@ -11,24 +11,24 @@
 
         <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add New Service Fee Category</h4>
-			  <h6 class="box-subtitle">Add service fee category i.e. normal, urgent, etc. <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">Seek Help </a></h6>
+			  <h4 class="box-title">Edit Existing Service Categories</h4>
+			  <h6 class="box-subtitle">Edit service Categories that you want to offer <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">Seek Help </a></h6>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="POST" action="{{route('servicesfeecategory.store')}}">
+					<form method="POST" action="{{route('servicesfeecategory.update', $editData->id)}}">
                         @csrf
 					  <div class="row">
 						<div class="col-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <h5>Service Category Name <span class="text-danger">*</span></h5>
+                                        <h5>Service Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="name" id="name" class="form-control" required> </div>
-                                        @error('oldpassword')
+                                            <input type="text" name="name" id="name" class="form-control" required value="{{$editData->name}}"> </div>
+                                        @error('name')
                                             <span class="text-danger">
                                                 {{$message}}
                                             </span>
@@ -43,7 +43,7 @@
 						
 					
 						<div class="text-xs-right">
-							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit">
+							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
 						</div>
 					</form>
 
