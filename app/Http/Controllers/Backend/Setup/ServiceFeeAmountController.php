@@ -88,4 +88,9 @@ class ServiceFeeAmountController extends Controller
 
         }
     }
+
+    public function ServiceFeeAmountDetail($service_category_id) {
+        $data['detailData'] = ServiceFeeAmount::where('service_category_id', $service_category_id)->orderBy('service_category_id', 'asc')->get();
+        return view('backend.setup.detail_servicefeeamount', $data);
+    }
 }

@@ -84,5 +84,6 @@ Route::get('/services/fee/amount/add', [ServiceFeeAmountController::class, 'Serv
 Route::post('/services/fee/amount/store', [ServiceFeeAmountController::class, 'ServiceFeeAmountStore'])->name('servicesfeeamount.store');
 Route::get('/services/fee/amount/edit/{service_category_id}', [ServiceFeeAmountController::class, 'ServiceFeeAmountEdit'])->name('servicesfeeamount.edit');
 Route::post('/services/fee/amount/update/{service_category_id}', [ServiceFeeAmountController::class, 'ServiceFeeAmountUpdate'])->name('servicesfeeamount.update');
+Route::get('/services/fee/amount/details/{service_category_id}', [ServiceFeeAmountController::class, 'ServiceFeeAmountDetail'])->name('servicesfeeamount.detail');
 
 });

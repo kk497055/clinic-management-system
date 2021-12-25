@@ -16,9 +16,7 @@
            <div class="box">
               <div class="box-header with-border">
                 <h3 class="box-title">Service Fee Amounts List</h3>
-                <a href="{{route('servicesfeeamount.add')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">
-                    Add New Service Fee
-                </a>
+
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -28,21 +26,21 @@
                           <tr>
                               <th width="10%">SL</th>
                               
-                              <th>Service Category Name</th>
+                              <th>Service Category: {{ $detailData[0]['service_fee_category']['name']}}</th>
+                              <th>Amount</th>
                               
-                              <th width="25%">Action</th>
                               
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($allData as $key => $servicefeeamount)
+                          @foreach($detailData as $key => $servicefeeamount)
                           <tr>
                               <td>{{ $key+1 }}</td>
                               
-                              <td>{{$servicefeeamount['service_fee_category']['name']}}</td>
+                              <td>{{$servicefeeamount['service_fee_main']['name']}}</td>
+                              <td>{{$servicefeeamount->service_amount}}</td>
                               
-                              <td><a href="{{route('servicesfeeamount.edit', $servicefeeamount->service_category_id)}}" class="btn btn-info">Edit</a>
-                                <a href="{{route('servicesfeeamount.detail', $servicefeeamount->service_category_id)}}" class="btn btn-primary">Details</a></td>
+                              
                               
                           </tr>
                           @endforeach
