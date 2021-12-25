@@ -28,7 +28,7 @@
                                         <h5>Service Category Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="name" id="name" class="form-control" required> </div>
-                                        @error('oldpassword')
+                                        @error('name')
                                             <span class="text-danger">
                                                 {{$message}}
                                             </span>

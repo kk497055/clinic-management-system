@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <div class="content-wrapper">
     <div class="container-full">
@@ -12,7 +13,7 @@
         <div class="box">
 			<div class="box-header with-border">
 			  <h4 class="box-title">Add New Service Fee</h4>
-			  <h6 class="box-subtitle">Add service fee <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">Seek Help </a></h6>
+			  <h6 class="box-subtitle">Add new service fee in the system <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">Seek Help </a></h6>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -36,54 +37,61 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                    <div class="col-md-6">
+                                </div> 
+                                
+                            </div>
+                        <div class="add_item">
+                            <div class="row">
+                                
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <h5>Select Service <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <select name="service_id" id="service_id" required class="form-control">
+                                            <select name="service_id[]" id="service_id" required class="form-control">
                                                 <option value="">Select Service</option>
                                                 @foreach ($service as $serv )
                                                 <option value="{{$serv->id}}"> {{$serv->name}}</option>
                                                 @endforeach
                                                 
                                             </select>
-                                        </div>
-                                    </div>
-                                </div> 
-                                
-                                  
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                        </div> <!-- end select -->
+                                    </div> <!-- end form group -->
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <h5>Fee Amount <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="service_amount" id="service_amount" class="form-control" required> </div>
-                                        @error('service_amount')
-                                            <span class="text-danger">
-                                                {{$message}}
-                                            </span>
-                                        @enderror
-                                    </div>
+                                                <div class="controls">
+                                                  <input type="text" name="service_amount[]" id="service_amount" class="form-control" required> </div>
+                                                                             @error('service_amount')
+                                                                             <span class="text-danger">
+                                                                                 {{$message}}
+                                                                             </span>
+                                                                             @enderror
+                                    </div> <!-- end form group -->
                                 </div> 
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <h5>Quantity <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="quantity" id="quantity" class="form-control" required> </div>
+                                            <input type="text" name="quantity[]" id="quantity" class="form-control" required> </div>
                                         @error('quantity')
                                             <span class="text-danger">
                                                 {{$message}}
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div> <!-- end form group -->
                                 </div> 
-                                  
-                            </div>
-                            
+                                <div class="col-md-3" style="padding-top:25px;">
+                                    <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
+                                <!--    <span class="btn btn-danger addeventmore"><i class="fa fa-minus-circle"></i></span> -->
+                                </div>
+                            </div> 
+
+                                   
+							
 						</div>
 					  </div>
+                    </div> <!-- End add_item -->
 						
 					
 						<div class="text-xs-right">
@@ -104,5 +112,76 @@
       
       </div>
   </div>
+
+  <div style="visibility: hidden;">
+    <div class="extra-row" id="extra-row">
+     <div class="delete-extra-row" id="delete-extra-row">
+
+        <div class="form-row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h5>Select Service <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select name="service_id[]" id="service_id" required class="form-control">
+                            <option value="">Select Service</option>
+                            @foreach ($service as $serv )
+                            <option value="{{$serv->id}}"> {{$serv->name}}</option>
+                            @endforeach
+                            
+                        </select>
+                    </div> <!-- end select -->
+                </div> <!-- end form group -->
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h5>Fee Amount <span class="text-danger">*</span></h5>
+                            <div class="controls">
+                              <input type="text" name="service_amount[]" id="service_amount" class="form-control" required> </div>
+                                                         @error('service_amount')
+                                                         <span class="text-danger">
+                                                             {{$message}}
+                                                         </span>
+                                                         @enderror
+                </div> <!-- end form group -->
+            </div> 
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h5>Quantity <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <input type="text" name="quantity[]" id="quantity" class="form-control" required> </div>
+                    @error('quantity')
+                        <span class="text-danger">
+                            {{$message}}
+                        </span>
+                    @enderror
+                </div> <!-- end form group -->
+            </div> 
+            <div class="col-md-3" style="padding-top:25px;">
+                <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
+                <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i></span>
+            </div>
+        </div> 
+
+               
+        
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+  <script type="text/javascript">
+  $(document).on("click", ".addeventmore", function(){
+    var new_extra_row = $("#extra-row").html();
+    $(this).closest(".add_item").append(new_extra_row);
+    counter++;
+  });
+  $(document).on("click", ".removeeventmore", function(){
+    $(this).closest(".delete-extra-row").remove();
+    counter -= 1;
+  });
+  </script>
+
+
 
   @endsection

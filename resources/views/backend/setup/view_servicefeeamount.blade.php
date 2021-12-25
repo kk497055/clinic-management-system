@@ -38,10 +38,10 @@
                           @foreach($allData as $key => $servicefeeamount)
                           <tr>
                               <td>{{ $key+1 }}</td>
-                              <td>{{$servicefeeamount->service_id}}</td>
-                              <td>{{$servicefeeamount->service_category_id}}</td>
+                              <td>{{$servicefeeamount['service_fee_main']['name']}}</td>
+                              <td>{{$servicefeeamount['service_fee_category']['name']}}</td>
                               <td>{{$servicefeeamount->service_amount}}</td>
-                              <td><a href="{{route('servicesfeecategory.edit', $servicefeeamount->id)}}" class="btn btn-info">EDIT</a>
+                              <td><a href="{{route('servicesfeecategory.edit', $servicefeeamount->id)}}" class="btn btn-info">Edit</a>
                                 <a href="{{route('servicesfeecategory.delete', $servicefeeamount->id)}}" class="btn btn-danger" id="delete">DELETE</a></td>
                               
                           </tr>
