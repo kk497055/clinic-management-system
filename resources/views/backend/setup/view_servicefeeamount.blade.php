@@ -27,9 +27,9 @@
                       <thead>
                           <tr>
                               <th width="10%">SL</th>
-                              <th>Service Name</th>
+                              
                               <th>Service Category Name</th>
-                              <th>Service Amount</th>
+                              
                               <th width="25%">Action</th>
                               
                           </tr>
@@ -38,11 +38,11 @@
                           @foreach($allData as $key => $servicefeeamount)
                           <tr>
                               <td>{{ $key+1 }}</td>
-                              <td>{{$servicefeeamount['service_fee_main']['name']}}</td>
+                              
                               <td>{{$servicefeeamount['service_fee_category']['name']}}</td>
-                              <td>{{$servicefeeamount->service_amount}}</td>
-                              <td><a href="{{route('servicesfeecategory.edit', $servicefeeamount->id)}}" class="btn btn-info">Edit</a>
-                                <a href="{{route('servicesfeecategory.delete', $servicefeeamount->id)}}" class="btn btn-danger" id="delete">DELETE</a></td>
+                              
+                              <td><a href="{{route('servicesfeeamount.edit', $servicefeeamount->service_category_id)}}" class="btn btn-info">Edit</a>
+                                <a href="" class="btn btn-danger" id="delete">DELETE</a></td>
                               
                           </tr>
                           @endforeach
