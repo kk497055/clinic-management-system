@@ -16,7 +16,7 @@
            <div class="box">
               <div class="box-header with-border">
                 <h3 class="box-title">Service Fee Amounts List</h3>
-                <a href="{{route('servicesfeecategory.add')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">
+                <a href="{{route('servicesfeeamount.add')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">
                     Add New Service Fee
                 </a>
               </div>
@@ -38,11 +38,11 @@
                           @foreach($allData as $key => $servicefeeamount)
                           <tr>
                               <td>{{ $key+1 }}</td>
-                              <td>{{$servicefeecategory->service_id}}</td>
-                              <td>{{$servicefeecategory->service_category_id}}</td>
-                              <td>{{$servicefeecategory->service_amount}}</td>
-                              <td><a href="{{route('servicesfeecategory.edit', $servicefeecategory->id)}}" class="btn btn-info">EDIT</a>
-                                <a href="{{route('servicesfeecategory.delete', $servicefeecategory->id)}}" class="btn btn-danger" id="delete">DELETE</a></td>
+                              <td>{{$servicefeeamount->service_id}}</td>
+                              <td>{{$servicefeeamount->service_category_id}}</td>
+                              <td>{{$servicefeeamount->service_amount}}</td>
+                              <td><a href="{{route('servicesfeecategory.edit', $servicefeeamount->id)}}" class="btn btn-info">EDIT</a>
+                                <a href="{{route('servicesfeecategory.delete', $servicefeeamount->id)}}" class="btn btn-danger" id="delete">DELETE</a></td>
                               
                           </tr>
                           @endforeach

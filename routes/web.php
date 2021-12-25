@@ -80,5 +80,7 @@ Route::get('/services/fee/category/delete/{id}', [ServiceFeeCategoryController::
 // service fee amount
 
 Route::get('/services/fee/amount/view', [ServiceFeeAmountController::class, 'ServiceFeeAmountView'])->name('servicesfeeamount.view');
+Route::get('/services/fee/amount/add', [ServiceFeeAmountController::class, 'ServiceFeeAmountAdd'])->name('servicesfeeamount.add');
+Route::post('/services/fee/amount/store', [ServiceFeeAmountController::class, 'ServiceFeeAmountStore'])->name('servicesfeeamount.store');
 
 });

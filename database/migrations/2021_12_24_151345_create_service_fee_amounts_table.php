@@ -18,6 +18,7 @@ class CreateServiceFeeAmountsTable extends Migration
             $table->integer('service_id');
             $table->integer('service_category_id');
             $table->double('service_amount');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
