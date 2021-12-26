@@ -19,14 +19,15 @@
 
               </div>
               <!-- /.box-header -->
-              <div class="box-body">
+              
                   <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
+                        <div class="box-body"><h5>Service Category: {{ $detailData[0]['service_fee_category']['name']}}</h5>
                           <tr>
                               <th width="10%">SL</th>
                               
-                              <th>Service Category: {{ $detailData[0]['service_fee_category']['name']}}</th>
+                              <th>Service Name</th>
                               <th>Amount</th>
                               
                               
