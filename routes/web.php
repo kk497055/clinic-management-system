@@ -7,6 +7,8 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\ServiceController;
 use App\Http\Controllers\Backend\Setup\ServiceFeeCategoryController;
 use App\Http\Controllers\Backend\Setup\ServiceFeeAmountController;
+use App\Http\Controllers\Backend\Setup\InventoryController;
+use App\Http\Controllers\Backend\Setup\SupplierController;
 
 
 /*
@@ -86,4 +88,20 @@ Route::get('/services/fee/amount/edit/{service_category_id}', [ServiceFeeAmountC
 Route::post('/services/fee/amount/update/{service_category_id}', [ServiceFeeAmountController::class, 'ServiceFeeAmountUpdate'])->name('servicesfeeamount.update');
 Route::get('/services/fee/amount/details/{service_category_id}', [ServiceFeeAmountController::class, 'ServiceFeeAmountDetail'])->name('servicesfeeamount.detail');
 
+//inventory
+
+Route::get('/inventory/items/view', [InventoryController::class, 'InventoryView'])->name('inventory.view');
+Route::get('/inventory/items/edit/{id}', [InventoryController::class, 'InventoryEdit'])->name('inventory.edit');
+Route::get('/inventory/items/add', [InventoryController::class, 'InventoryAdd'])->name('inventory.add');
+Route::get('/inventory/items/purchase', [InventoryController::class, 'InventoryPurchase'])->name('inventory.purchase');
+Route::post('/inventory/items/store', [InventoryController::class, 'Inventorystore'])->name('inventory.store');
+Route::post('/inventory/items/update/{id}', [InventoryController::class, 'InventoryUpdate'])->name('inventory.update');
+Route::get('/inventory/items/delete/{id}', [InventoryController::class, 'InventoryDelete'])->name('inventory.delete');
+
+//supplier
+Route::get('/suppliers/view', [SupplierController::class, 'SupplierView'])->name('suppliers.view');
+Route::get('/suppliers/add', [SupplierController::class, 'SupplierAdd'])->name('suppliers.add');
+Route::post('/suppliers/store', [SupplierController::class, 'SupplierStore'])->name('suppliers.store');
+
 });
+

@@ -69,6 +69,8 @@
               <li><a href="{{ route('services.view')}}"><i class="ti-more"></i>Services</a></li>
               <li><a href="{{ route('servicesfeecategory.view')}}"><i class="ti-more"></i>Service Fee Categories</a></li>
               <li><a href="{{ route('servicesfeeamount.view')}}"><i class="ti-more"></i>Service Fee Amounts</a></li>
+              <li><a href="{{ route('suppliers.view')}}"><i class="ti-more"></i>Suppliers</a></li>
+              <li><a href="{{ route('inventory.view')}}"><i class="ti-more"></i>Inventory Items</a></li>
              
             </ul>
         </li>
