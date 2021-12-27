@@ -27,7 +27,7 @@
                                     <div class="form-group">
                                         <h5>Supplier Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="name" id="name" class="form-control" required value="$editData->item"> </div>
+                                            <input type="text" name="name" id="name" class="form-control" required> </div>
                                         
                                     </div>
                                 </div> 
