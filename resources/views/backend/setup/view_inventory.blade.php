@@ -46,7 +46,7 @@
                               <td>{{$inventory->closing_balance}}</td>
                               <td>{{$inventory->unit_price}}</td>
                               <td><a href="{{route('inventory.edit', $inventory->id)}}" class="btn btn-info">EDIT</a>
-                                <a href="{{route('inventory.purchase', $inventory->id)}}" class="btn btn-primary">PURCHASE</a></td>
+                                <a href="{{route('inventory.purchase')}}" class="btn btn-primary">PURCHASE</a></td>
                               
                           </tr>
                           @endforeach

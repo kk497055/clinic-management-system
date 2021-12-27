@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Backend\Setup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 use App\Models\Inventory;
+use App\Models\Supplier;
+use App\Models\User;
+use App\Models\InventoryPurchase;
+use App\Models\InventoryPurchaseDetail;
+
 
 class InventoryController extends Controller
 {
@@ -71,5 +77,48 @@ class InventoryController extends Controller
         );
 
         return redirect()->route('inventory.view')->with($notification);
+    }
+
+    public function InventoryPurchase() {
+        $data['suppliers'] = Supplier::all();
+        $data['inventories'] = Inventory::all();
+        return view('backend.setup.purchase_inventory', $data);
+    }
+
+    public function InventoryPurchaseStore(Request $request) {
+        $data = New InventoryPurchase();
+        $data->supplier_id = $request->supplier_id;
+        $data->discount = 10; //$request->discount;
+        $data->gross_total = 30; //$request->gross_total;
+        $data->net_total = 27; //$request->net_total;
+        $data->created_by = Auth::user()->id;
+        $data->save();
+
+
+        $count_items = count($request->unit_price);
+
+        if ($count_items != NULL) {
+            for($i=0;$i<$count_items;$i++) {
+                $inv = New InventoryPurchaseDetail();
+                    $inv->purchase_id = $data->id ;
+                    $inv->inventory_id = $request->inventory_id[$i];
+                    $inv->quantity = $request->quantity[$i];
+                    $inv->unit_price = $request->unit_price[$i];
+                    $inv->discount = $request->discount[$i];
+                    //$inv->gross_line_total = $request->gross_line_total[$i];
+                    $inv->net_line_total = $request->net_line_total[$i];
+                    $inv->save();
+
+            }
+        }
+
+        $notification = array(
+            'message' => 'Purchase Order Successfully Created',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('inventory.view')->with($notification);
+
+
     }
 }

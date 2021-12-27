@@ -94,6 +94,7 @@ Route::get('/inventory/items/view', [InventoryController::class, 'InventoryView'
 Route::get('/inventory/items/edit/{id}', [InventoryController::class, 'InventoryEdit'])->name('inventory.edit');
 Route::get('/inventory/items/add', [InventoryController::class, 'InventoryAdd'])->name('inventory.add');
 Route::get('/inventory/items/purchase', [InventoryController::class, 'InventoryPurchase'])->name('inventory.purchase');
+Route::post('/inventory/items/purchase/store', [InventoryController::class, 'InventoryPurchaseStore'])->name('inventorypurchase.store');
 Route::post('/inventory/items/store', [InventoryController::class, 'Inventorystore'])->name('inventory.store');
 Route::post('/inventory/items/update/{id}', [InventoryController::class, 'InventoryUpdate'])->name('inventory.update');
 Route::get('/inventory/items/delete/{id}', [InventoryController::class, 'InventoryDelete'])->name('inventory.delete');
