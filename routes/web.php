@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\Setup\ServiceFeeCategoryController;
 use App\Http\Controllers\Backend\Setup\ServiceFeeAmountController;
 use App\Http\Controllers\Backend\Setup\InventoryController;
 use App\Http\Controllers\Backend\Setup\SupplierController;
+use App\Http\Controllers\Backend\Setup\EmployeeController;
 
 
 /*
@@ -103,6 +104,12 @@ Route::get('/inventory/items/delete/{id}', [InventoryController::class, 'Invento
 Route::get('/suppliers/view', [SupplierController::class, 'SupplierView'])->name('suppliers.view');
 Route::get('/suppliers/add', [SupplierController::class, 'SupplierAdd'])->name('suppliers.add');
 Route::post('/suppliers/store', [SupplierController::class, 'SupplierStore'])->name('suppliers.store');
+
+// employees
+Route::get('/employees/view', [EmployeeController::class, 'EmployeeView'])->name('employees.view');
+Route::get('/employees/add', [EmployeeController::class, 'EmployeeAdd'])->name('employees.add');
+Route::post('/employees/store', [EmployeeController::class, 'EmployeeStore'])->name('employees.store');
+
 
 });
 

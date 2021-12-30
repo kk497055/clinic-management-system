@@ -17,10 +17,18 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('usertype')->nullable();
             $table->string('name')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('id_no')->nullable();
+            $table->string('code')->nullable();
+            $table->string('role')->nullable();
             $table->rememberToken();
+            $table->date('join_date')->nullable();
+            $table->varchar('designation')->nullable();
+            $table->double('salary')->nullable();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('mobile')->nullable();

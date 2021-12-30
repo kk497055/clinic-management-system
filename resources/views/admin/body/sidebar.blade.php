@@ -66,6 +66,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
+              <li><a href="{{ route('employees.view')}}"><i class="ti-more"></i>Employees</a></li>
               <li><a href="{{ route('services.view')}}"><i class="ti-more"></i>Services</a></li>
               <li><a href="{{ route('servicesfeecategory.view')}}"><i class="ti-more"></i>Service Fee Categories</a></li>
               <li><a href="{{ route('servicesfeeamount.view')}}"><i class="ti-more"></i>Service Fee Amounts</a></li>

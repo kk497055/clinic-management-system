@@ -88,14 +88,11 @@ class InventoryController extends Controller
     public function InventoryPurchaseStore(Request $request) {
         $data = New InventoryPurchase();
         $data->supplier_id = $request->supplier_id;
-        $data->discount = 10; //$request->discount;
-        $data->gross_total = 30; //$request->gross_total;
-        $data->net_total = 27; //$request->net_total;
         $data->created_by = Auth::user()->id;
         $data->save();
 
 
-        $count_items = count($request->unit_price);
+        $count_items = count($request->quantity);
 
         if ($count_items != NULL) {
             for($i=0;$i<$count_items;$i++) {
@@ -103,10 +100,7 @@ class InventoryController extends Controller
                     $inv->purchase_id = $data->id ;
                     $inv->inventory_id = $request->inventory_id[$i];
                     $inv->quantity = $request->quantity[$i];
-                    $inv->unit_price = $request->unit_price[$i];
-                    $inv->discount = $request->discount[$i];
                     //$inv->gross_line_total = $request->gross_line_total[$i];
-                    $inv->net_line_total = $request->net_line_total[$i];
                     $inv->save();
 
             }

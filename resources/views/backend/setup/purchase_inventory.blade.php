@@ -40,21 +40,7 @@
                                 </div> 
                                 
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h5>Total <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="net_total" id="net_total" class="form-control" required> </div>
-                                                                             @error('total')
-                                                                             <span class="text-danger">
-                                                                                 {{$message}}
-                                                                             </span>
-                                                                             @enderror
-                                        </div>
-                                    </div>
-                                </div> 
-                                
+                           
                                 
                             
                         <div class="add_item">
@@ -74,18 +60,7 @@
                                         </div> <!-- end select -->
                                     </div> <!-- end form group -->
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <h5>Unit Price <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                  <input type="text" name="unit_price[]" id="unit_price" class="form-control" required> </div>
-                                                                             @error('unit_price')
-                                                                             <span class="text-danger">
-                                                                                 {{$message}}
-                                                                             </span>
-                                                                             @enderror
-                                    </div> <!-- end form group -->
-                                </div> 
+                                
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <h5>Quantity <span class="text-danger">*</span></h5>
@@ -98,30 +73,8 @@
                                         @enderror
                                     </div> <!-- end form group -->
                                 </div> 
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <h5>Disc <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                  <input type="text" name="discount[]" id="discount" class="form-control" required> </div>
-                                                                             @error('disc')
-                                                                             <span class="text-danger">
-                                                                                 {{$message}}
-                                                                             </span>
-                                                                             @enderror
-                                    </div> <!-- end form group -->
-                                </div> 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <h5>Line Total <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                  <input type="text" name="net_line_total[]" id="net_line_total" class="form-control" required> </div>
-                                                                             @error('line_item')
-                                                                             <span class="text-danger">
-                                                                                 {{$message}}
-                                                                             </span>
-                                                                             @enderror
-                                    </div> <!-- end form group -->
-                                </div> 
+                                
+                                
                                 <div class="col-md-2" style="padding-top:25px;">
                                     <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
                                 <!--    <span class="btn btn-danger addeventmore"><i class="fa fa-minus-circle"></i></span> -->
@@ -168,25 +121,13 @@
                             <select name="inventory_id[]" id="inventory_id" required class="form-control">
                                 <option value="">Select Inventory</option>
                                 @foreach ($inventories as $inventory )
-                                <option value="{{$inventory->id}}"> {{$inventory->item}}</option>
+                                <option value="{{$inventory->id}}"> {{$inventory->item." PKR.".$inventory->unit_price}}</option>
                                 @endforeach
                                 
                             </select>
                         </div> <!-- end select -->
                     </div> <!-- end form group -->
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <h5>Unit Price <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                  <input type="text" name="unit_price[]" id="unit_price" class="form-control" required> </div>
-                                                             @error('unit_price')
-                                                             <span class="text-danger">
-                                                                 {{$message}}
-                                                             </span>
-                                                             @enderror
-                    </div> <!-- end form group -->
-                </div> 
                 <div class="col-md-2">
                     <div class="form-group">
                         <h5>Quantity <span class="text-danger">*</span></h5>
@@ -199,30 +140,9 @@
                         @enderror
                     </div> <!-- end form group -->
                 </div> 
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <h5>Disc <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                  <input type="text" name="disc[]" id="disc" class="form-control" required> </div>
-                                                             @error('disc')
-                                                             <span class="text-danger">
-                                                                 {{$message}}
-                                                             </span>
-                                                             @enderror
-                    </div> <!-- end form group -->
-                </div> 
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <h5>Line Total <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                  <input type="text" name="line_item[]" id="line_item" class="form-control" required> </div>
-                                                             @error('line_item')
-                                                             <span class="text-danger">
-                                                                 {{$message}}
-                                                             </span>
-                                                             @enderror
-                    </div> <!-- end form group -->
-                </div> 
+                
+                
+                
                 <div class="col-md-2" style="padding-top:25px;">
                     <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
                     <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i></span>
@@ -238,6 +158,8 @@
 </div>
 
   <script type="text/javascript">
+  $(document).ready(function(){
+      var counter = 0;
   $(document).on("click", ".addeventmore", function(){
     var new_extra_row = $("#extra-row").html();
     $(this).closest(".add_item").append(new_extra_row);
@@ -247,7 +169,8 @@
     $(this).closest(".delete-extra-row").remove();
     counter -= 1;
   });
-  
+
+});
   
   </script>
 
