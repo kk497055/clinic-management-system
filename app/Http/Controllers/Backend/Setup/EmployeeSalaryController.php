@@ -19,6 +19,11 @@ class EmployeeSalaryController extends Controller
         return view('backend.setup.view_salary', $data);
     }
 
+    public function EmployeeSalaryincrementDetail($id) {
+        $data['employees'] = EmployeeSalaryLog::join('Users', 'users.id', '=', 'employee_id')->where('users.id', $id)->orderBy('employee_salary_logs.id', 'desc')->get();
+        return view('backend.setup.detail_salary', $data);
+    }
+
     public function EmployeeSalaryAdd() {
         $data['employees'] = User::where('role', 'Employee')->get();
         return view('backend.setup.add_salary', $data);

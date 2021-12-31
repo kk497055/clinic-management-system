@@ -118,6 +118,7 @@ Route::get('/employees/salary/view', [EmployeeSalaryController::class, 'Employee
 Route::get('/employees/salary/add', [EmployeeSalaryController::class, 'EmployeeSalaryAdd'])->name('salary.add');
 Route::post('/employees/salary/store', [EmployeeSalaryController::class, 'EmployeeSalaryStore'])->name('salary.store');
 Route::get('/employees/salary/increment/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrement'])->name('salary.increment');
+Route::get('/employees/salary/increment/detail/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrementDetail'])->name('salary.incrementdetail');
 Route::post('/employees/salary/increment/store/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrementStore'])->name('salary.incrementstore');
 });
 

@@ -28,10 +28,11 @@
                           <tr>
                               <th width="10%">SL</th>
                               <th>Employee Name</th>
-                              <th>Current Salary</th>
-                              <th>Join Date</th>
-                              <th>Last Increment Date</th>
-                              <th width="30%">Action</th>
+                              <th>Previous Salary</th>
+                              <th>Increment</th>
+                              <th>Gross Salary</th>
+                              <th>Increment Date</th>
+                              
                               
                           </tr>
                       </thead>
@@ -40,11 +41,11 @@
                           <tr>
                               <td>{{ $key+1 }}</td>
                               <td>{{$employee->name}}</td>
-                              <td>{{$employee->previous_salary+$employee->increment_salary}}</td>
-                              <td>{{$employee->join_date}}</td>
+                              <td>{{$employee->previous_salary}}</td>
+                              <td>{{$employee->increment_salary}}</td>
+                              <td>{{$employee->increment_salary+$employee->previous_salary}}</td>
                               <td>{{$employee->effective_date}}</td>
-                              <td><a href="{{route('salary.increment', $employee->employee_id)}}" class="btn btn-info">Increment</a>
-                                <a href="{{route('salary.incrementdetail', $employee->employee_id)}}" class="btn btn-primary">Details</a></td>
+                              
                               
                           </tr>
                           @endforeach
