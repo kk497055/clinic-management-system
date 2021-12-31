@@ -22,6 +22,52 @@ class EmployeeController extends Controller
         return view('backend.setup.add_employees');
     }
 
+    public function EmployeeEdit($id){
+        $data['editData'] = User::find($id);
+        return view('backend.setup.edit_employees', $data);
+    }
+
+    public function EmployeeUpdate(Request $request, $id) {
+        $data = User::find($id);
+        
+        $validatedData =([
+            'name' => 'required',
+            'email' => 'required',
+            'join_date' => 'required',
+            'mobile' => 'required',
+            'address' => 'required',
+            'gender' => 'required',
+            'dob' => 'required'
+
+        ]);
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->mother_name = $request->mother_name;
+        $data->email = $request->email;
+        $data->role = $request->userrole;
+        $data->id_no = $data->id_no;
+        $data->usertype = $request->usertype;
+        $data->mobile = $request->mobile;
+        $data->address = $request->address;
+        $data->dob = $request->dob;
+        $data->code = $data->code;
+        $data->password = bcrypt($data->code);
+        $data->join_date = date('Y-m-d', strtotime($request->join_date));
+        $data->dob = date('Y-m-d', strtotime($request->dob));
+        $data->gender = $request->gender;
+
+        $data->save();
+
+        $notification = array(
+            'message' => 'Employee Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('employees.view')->with($notification);
+
+    }
+
     public function EmployeeStore(Request $request){
         $validatedData = ([
             'name' => 'required',
@@ -40,6 +86,7 @@ class EmployeeController extends Controller
         $data->mother_name = $request->mother_name;
         $data->email = $request->email;
         $data->role = $request->userrole;
+
 
         $employee = User::where('usertype', 'Employee')->orderBy('id', 'desc')->first();
 
@@ -68,6 +115,7 @@ class EmployeeController extends Controller
         }
 
         $data->id_no = $id_no;
+        $data->usertype = $request->usertype;
         $data->mobile = $request->mobile;
         $data->address = $request->address;
         $data->dob = $request->dob;

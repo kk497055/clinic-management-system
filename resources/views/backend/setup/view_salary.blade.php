@@ -15,9 +15,9 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Employee List</h3>
-                <a href="{{route('employees.add')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">
-                    Add New Employees
+                <h3 class="box-title">Employee Salaries</h3>
+                <a href="{{route('salary.add')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">
+                    Add Salary
                 </a>
               </div>
               <!-- /.box-header -->
@@ -26,35 +26,25 @@
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                              <th width="5%">SL</th>
-                              <th>Name</th>
-                              <th>ID NO</th>
-                              <th>Mobile</th>
-                              <th>Gender</th>
+                              <th width="10%">SL</th>
+                              <th>Employee Name</th>
+                              <th>Current Salary</th>
                               <th>Join Date</th>
-                              <th>Date of Birth</th>
-                              @if(Auth::user()->usertype == 'Admin')
-                              <th>Code</th>
-                              @endif
-                              <th width="20%">Action</th>
+                              <th>Last Increment Date</th>
+                              <th width="30%">Action</th>
                               
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($allData as $key => $employee)
+                          @foreach($employees as $key => $employee)
                           <tr>
                               <td>{{ $key+1 }}</td>
                               <td>{{$employee->name}}</td>
-                              <td>{{$employee->id_no}}</td>
-                              <td>{{$employee->mobile}}</td>
-                              <td>{{$employee->gender}}</td>
+                              <td>{{$employee->previous_salary+$employee->increment_salary}}</td>
                               <td>{{$employee->join_date}}</td>
-                              <td>{{$employee->dob}}</td>
-                              @if(Auth::user()->usertype == 'Admin')
-                              <td>{{$employee->code}}</td>
-                              @endif
-                              <td><a href="{{route('employees.edit', $employee->id)}}" class="btn btn-info">EDIT</a>
-                                <a href="" class="btn btn-primary">Details</a></td>
+                              <td>{{$employee->effective_date}}</td>
+                              <td><a href="{{route('salary.increment', $employee->employee_id)}}" class="btn btn-info">Increment</a>
+                                <a href="" class="btn btn-danger" id="delete">Details</a></td>
                               
                           </tr>
                           @endforeach

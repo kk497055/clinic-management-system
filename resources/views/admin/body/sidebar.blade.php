@@ -67,11 +67,26 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('employees.view')}}"><i class="ti-more"></i>Employees</a></li>
+              <li><a href="{{ route('salary.view')}}"><i class="ti-more"></i>Employee Salaries</a></li>
               <li><a href="{{ route('services.view')}}"><i class="ti-more"></i>Services</a></li>
               <li><a href="{{ route('servicesfeecategory.view')}}"><i class="ti-more"></i>Service Fee Categories</a></li>
               <li><a href="{{ route('servicesfeeamount.view')}}"><i class="ti-more"></i>Service Fee Amounts</a></li>
               <li><a href="{{ route('suppliers.view')}}"><i class="ti-more"></i>Suppliers</a></li>
               <li><a href="{{ route('inventory.view')}}"><i class="ti-more"></i>Inventory Items</a></li>
+             
+            </ul>
+        </li>
+
+        <li class="treeview {{ ($prefix == '/operations')?'active':''}}">
+            <a href="#">
+              <i data-feather="mail"></i> <span>Operations</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href=""><i class="ti-more"></i>Set up Appointments</a></li>
+              
              
             </ul>
         </li>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\Setup\ServiceFeeAmountController;
 use App\Http\Controllers\Backend\Setup\InventoryController;
 use App\Http\Controllers\Backend\Setup\SupplierController;
 use App\Http\Controllers\Backend\Setup\EmployeeController;
+use App\Http\Controllers\Backend\Setup\EmployeeSalaryController;
 
 
 /*
@@ -109,7 +110,14 @@ Route::post('/suppliers/store', [SupplierController::class, 'SupplierStore'])->n
 Route::get('/employees/view', [EmployeeController::class, 'EmployeeView'])->name('employees.view');
 Route::get('/employees/add', [EmployeeController::class, 'EmployeeAdd'])->name('employees.add');
 Route::post('/employees/store', [EmployeeController::class, 'EmployeeStore'])->name('employees.store');
+Route::get('/employees/edit/{id}', [EmployeeController::class, 'EmployeeEdit'])->name('employees.edit');
+Route::post('/employees/update/{id}', [EmployeeController::class, 'EmployeeUpdate'])->name('employees.update');
 
-
+//Salary
+Route::get('/employees/salary/view', [EmployeeSalaryController::class, 'EmployeeSalaryView'])->name('salary.view');
+Route::get('/employees/salary/add', [EmployeeSalaryController::class, 'EmployeeSalaryAdd'])->name('salary.add');
+Route::post('/employees/salary/store', [EmployeeSalaryController::class, 'EmployeeSalaryStore'])->name('salary.store');
+Route::get('/employees/salary/increment/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrement'])->name('salary.increment');
+Route::post('/employees/salary/increment/store/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrementStore'])->name('salary.incrementstore');
 });
 
