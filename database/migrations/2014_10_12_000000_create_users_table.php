@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('mobile')->nullable();
             $table->string('address')->nullable();
+            $table->integer('city_id')->nullable();
             $table->string('image')->nullable();
             $table->string('gender')->nullable();
             $table->tinyinteger('status')->nullable();

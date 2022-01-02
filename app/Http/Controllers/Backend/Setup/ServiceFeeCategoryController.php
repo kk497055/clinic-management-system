@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ServiceFeeCategory;
 use App\Models\Service;
 use App\Models\ServiceFeeAmount;
+use Auth;
 
 class ServiceFeeCategoryController extends Controller
 {

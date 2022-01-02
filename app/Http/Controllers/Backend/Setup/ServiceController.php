@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Setup;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use Auth;
 
 class ServiceController extends Controller
 {

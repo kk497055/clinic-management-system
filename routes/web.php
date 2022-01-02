@@ -11,6 +11,10 @@ use App\Http\Controllers\Backend\Setup\InventoryController;
 use App\Http\Controllers\Backend\Setup\SupplierController;
 use App\Http\Controllers\Backend\Setup\EmployeeController;
 use App\Http\Controllers\Backend\Setup\EmployeeSalaryController;
+use App\Http\Controllers\Backend\Setup\BranchController;
+use App\Http\Controllers\Backend\Operations\EmployeeTransferController;
+use App\Http\Controllers\Backend\Operations\PatientController;
+use App\Http\Controllers\Backend\Operations\AppointmentController;
 
 
 /*
@@ -120,5 +124,35 @@ Route::post('/employees/salary/store', [EmployeeSalaryController::class, 'Employ
 Route::get('/employees/salary/increment/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrement'])->name('salary.increment');
 Route::get('/employees/salary/increment/detail/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrementDetail'])->name('salary.incrementdetail');
 Route::post('/employees/salary/increment/store/{id}', [EmployeeSalaryController::class, 'EmployeeSalaryincrementStore'])->name('salary.incrementstore');
+
+//Branches
+Route::get('/branches/view', [BranchController::class, 'BranchView'])->name('branch.view');
+Route::get('/branches/add', [BranchController::class, 'BranchAdd'])->name('branch.add');
+Route::post('/branches/store', [BranchController::class, 'BranchStore'])->name('branch.store');
+Route::get('/branches/edit/{id}', [BranchController::class, 'BranchEdit'])->name('branch.edit');
+Route::get('/branches/delete/{id}', [BranchController::class, 'BranchDelete'])->name('branch.delete');
+Route::post('/branches/Update/{id}', [BranchController::class, 'BranchUpdate'])->name('branch.update');
+
+
 });
 
+Route::prefix('operations')->group(function(){
+    Route::get('/employees/branches/view', [EmployeeTransferController::class, 'EmployeeBranchView'])->name('employees.branch.view');
+    Route::get('/employees/transfer', [EmployeeTransferController::class, 'EmployeeTransferStart'])->name('employees.transfer');
+    Route::post('/employees/store', [EmployeeTransferController::class, 'EmployeeTransferStore'])->name('employeestransfer.store');
+
+// Patients
+
+    Route::get('/patients/view', [PatientController::class, 'PatientView'])->name('patients.view');
+    Route::get('/patients/edit/{user_id}', [PatientController::class, 'PatientEdit'])->name('patients.edit');
+    Route::post('/patients/update/{user_id}', [PatientController::class, 'PatientUpdate'])->name('patients.update');
+    Route::get('/patients/add', [PatientController::class, 'PatientAdd'])->name('patients.add');
+    Route::post('/patients/store', [PatientController::class, 'PatientStore'])->name('patients.store');
+
+//Appointments
+
+    Route::get('/appointments/view', [AppointmentController::class, 'AppointmentView'])->name('appointments.view');
+    Route::get('/appointments/add', [AppointmentController::class, 'AppointmentAdd'])->name('appointments.add');
+    Route::post('/appointments/store', [AppointmentController::class, 'AppointmentStore'])->name('appointments.store');
+
+});

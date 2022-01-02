@@ -60,7 +60,7 @@
 		
         <li class="treeview {{ ($prefix == '/setup')?'active':''}}">
             <a href="#">
-              <i data-feather="mail"></i> <span>Setup Management</span>
+              <i data-feather="mail"></i> <span>Setup</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
               </span>
@@ -68,6 +68,7 @@
             <ul class="treeview-menu">
               <li><a href="{{ route('employees.view')}}"><i class="ti-more"></i>Employees</a></li>
               <li><a href="{{ route('salary.view')}}"><i class="ti-more"></i>Employee Salaries</a></li>
+              <li><a href="{{ route('branch.view')}}"><i class="ti-more"></i>Branches</a></li>
               <li><a href="{{ route('services.view')}}"><i class="ti-more"></i>Services</a></li>
               <li><a href="{{ route('servicesfeecategory.view')}}"><i class="ti-more"></i>Service Fee Categories</a></li>
               <li><a href="{{ route('servicesfeeamount.view')}}"><i class="ti-more"></i>Service Fee Amounts</a></li>
@@ -85,31 +86,18 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="ti-more"></i>Set up Appointments</a></li>
+                <li><a href="{{route('employees.transfer')}}"><i class="ti-more"></i>Transfer Employees</a></li>
+                <li><a href=""><i class="ti-more"></i>Receive Inventory</a></li>
+                <li><a href="{{route('patients.view')}}"><i class="ti-more"></i>Search Patients</a></li>
+                <li><a href="{{route('patients.add')}}"><i class="ti-more"></i>Register Patients</a></li>
+                <li><a href="{{route('appointments.add')}}"><i class="ti-more"></i>Set up Appointments</a></li>
+                <li><a href="{{route('appointments.view')}}"><i class="ti-more"></i>View Appointments</a></li>
               
              
             </ul>
         </li>
 		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="grid"></i>
-            <span>Components</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-            <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
-            <li><a href="components_sliders.html"><i class="ti-more"></i>Sliders</a></li>
-            <li><a href="components_dropdown.html"><i class="ti-more"></i>Dropdown</a></li>
-            <li><a href="components_modals.html"><i class="ti-more"></i>Modal</a></li>
-            <li><a href="components_nestable.html"><i class="ti-more"></i>Nestable</a></li>
-            <li><a href="components_progress_bars.html"><i class="ti-more"></i>Progress Bars</a></li>
-          </ul>
-        </li>
+        
 		
 		
          
