@@ -18,7 +18,7 @@
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="POST" action="{{route('appointments.store')}}">
+					<form method="POST" action="{{route('appointments.update', $editData->id)}}">
                         @csrf
 					  <div class="row">
 						<div class="col-12">
@@ -27,7 +27,7 @@
                                     <div class="form-group">
                                         <h5>Patient Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="name" id="name" class="form-control" required> </div>
+                                            <input type="text" name="name" id="name" class="form-control" required value="{{$editData->patient_name}}"> </div>
                                         
                                     </div>
                                 </div> 
@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <h5>Mobile <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="mobile" id="mobile" class="form-control" required> </div>
+                                            <input type="text" name="mobile" id="mobile" class="form-control" required value="{{$editData->mobile}}"> </div>
                                         
                                     </div>
                                 </div>   
@@ -48,7 +48,7 @@
                                             <select name="branch_id" id="branch_id" required class="form-control">
                                                 <option value="">Select Branch</option>
                                                 @foreach($branches as $branch)
-                                                <option value="{{$branch->id}}">{{$branch->branch_name}}</option>
+                                                <option value="{{$branch->id}}" {{($editData->branch_id == $branch->id?"selected":"")}}>{{$branch->branch_name}}</option>
                                                 @endforeach
                                                 
                                                 
@@ -63,7 +63,7 @@
                                             <select name="service_category" id="service_category" required class="form-control">
                                                 <option value="">Select Priority</option>
                                                 @foreach($service_categories as $service_category)
-                                                <option value="{{$service_category->id}}">{{$service_category->name}}</option>
+                                                <option value="{{$service_category->id}}" {{$editData->service_category == $service_category->id?"selected":""}}>{{$service_category->name}}</option>
                                                 @endforeach
                                                 
                                             </select>
@@ -76,7 +76,7 @@
                                     <div class="form-group">
                                         <h5>Appointment Date <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="datetime" name="appointment_date" id="appointment_date" class="form-control" required> </div>
+                                            <input type="datetime" name="appointment_date" id="appointment_date" class="form-control" required value="{{$editData->appointment_start}}"> </div>
                                         
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                     <div class="form-group">
                                         <h5>Notes <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <textarea name="notes" id="notes" class="form-control" required></textarea> </div>
+                                            <textarea name="notes" id="notes" class="form-control" required>{{$editData->notes}}</textarea> </div>
                                         
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
 						
 					
 						<div class="text-xs-right">
-							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit">
+							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
 						</div>
 					</form>
 

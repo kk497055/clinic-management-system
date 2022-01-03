@@ -31,10 +31,10 @@
                               <th>Mobile</th>
                               <th>Priority</th>
                               <th>Branch</th>
-                              <th>Appointment Date</th>
+                              <th>Date</th>
                               <th>Status</th>
-                              <th>Notes</th>
-                              <th width="20%">Action</th>
+                              <th width="30%">Notes</th>
+                              <th>Action</th>
                               
                           </tr>
                       </thead>
@@ -47,10 +47,12 @@
                               <td>{{$appointment['priority_info']['name']}}</td>
                               <td>{{$appointment['branch_info']['branch_name']}}</td>
                               <td>{{$appointment->appointment_start}}</td>
-                              <td>{{$appointment->status}}</td>
-                              <td>{{$patient->notes}}</td>
-                              <td><a href="{{route('appointments.store', $appointment->id)}}" class="btn btn-info">EDIT</a>
-                                <a href="" class="btn btn-primary">Details</a></td>
+                              @if ($appointment->status == "Pending")
+                              <td><span class="badge badge-info">{{$appointment->status}}</span></td>
+                              @endif
+                              <td>{{$appointment->notes}}</td>
+                              <td><a href="{{route('appointments.edit', $appointment->id)}}" class="btn btn-info">EDIT</a>
+                                <a href="" class="btn btn-primary">Complete</a></td>
                               
                           </tr>
                           @endforeach

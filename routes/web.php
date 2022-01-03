@@ -153,6 +153,8 @@ Route::prefix('operations')->group(function(){
 
     Route::get('/appointments/view', [AppointmentController::class, 'AppointmentView'])->name('appointments.view');
     Route::get('/appointments/add', [AppointmentController::class, 'AppointmentAdd'])->name('appointments.add');
+    Route::get('/appointments/edit/{id}', [AppointmentController::class, 'AppointmentEdit'])->name('appointments.edit');
+    Route::post('/appointments/update/{id}', [AppointmentController::class, 'AppointmentUpdate'])->name('appointments.update');
     Route::post('/appointments/store', [AppointmentController::class, 'AppointmentStore'])->name('appointments.store');
 
 });

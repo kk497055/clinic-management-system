@@ -23,6 +23,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('notes')->nullable();
             $table->datetime('appointment_start');
             $table->tinyinteger('appointment_duration')->nullable();
+            $table->integer('created_by');
             $table->timestamps();
         });
     }
