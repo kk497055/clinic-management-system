@@ -88,7 +88,7 @@ class EmployeeController extends Controller
         $data->role = $request->userrole;
 
 
-        $employee = User::where('usertype', 'Employee')->orderBy('id', 'desc')->first();
+        $employee = User::where('role', 'Employee')->orderBy('id', 'desc')->first();
 
         if ($employee == NULL) {
             
@@ -103,7 +103,7 @@ class EmployeeController extends Controller
             }
 
         } else {
-            $employee = User::where('usertype', 'Employee')->orderBy('id', 'desc')->first()->id;
+            $employee = User::where('role', 'Employee')->orderBy('id', 'desc')->first()->id;
             $emp_id_no = $employee;
             if ($emp_id_no < 10) {
                 $id_no = '000'.$emp_id_no;
@@ -122,6 +122,7 @@ class EmployeeController extends Controller
         $code = rand(0000, 9999);
         $data->code = $code;
         $password = bcrypt($code);
+        $data->password = $password;
         $data->join_date = date('Y-m-d', strtotime($request->join_date));
         $data->dob = date('Y-m-d', strtotime($request->dob));
         $data->gender = $request->gender;

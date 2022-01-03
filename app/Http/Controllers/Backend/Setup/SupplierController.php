@@ -12,7 +12,7 @@ class SupplierController extends Controller
 {
     //
     public function SupplierView() {
-        $data['allData'] = Supplier::join('Cities', 'cities.id', '=', 'city')->get();
+        $data['allData'] = Supplier::join('Cities', 'cities.city_id', '=', 'city')->get();
         //$data['city_info'] = City::all();
         return view('backend.setup.view_supplier', $data);
     }

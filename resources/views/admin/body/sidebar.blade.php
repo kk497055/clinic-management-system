@@ -14,7 +14,7 @@
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="{{ asset('backend/images/logo-dark.png')}}" alt="">
-						  <h3><b>Easy</b> ERP</h3>
+						  <h3><b>Easy</b> Clinic</h3>
 					 </div>
 				</a>
 			</div>
@@ -46,7 +46,7 @@
 		  
         <li class="treeview {{ ($prefix == '/profile')?'active':''}}"">
           <a href="#">
-            <i data-feather="mail"></i> <span>Manage Profile</span>
+            <i data-feather="mail"></i> <span>Create Profile</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -74,6 +74,7 @@
               <li><a href="{{ route('servicesfeeamount.view')}}"><i class="ti-more"></i>Service Fee Amounts</a></li>
               <li><a href="{{ route('suppliers.view')}}"><i class="ti-more"></i>Suppliers</a></li>
               <li><a href="{{ route('inventory.view')}}"><i class="ti-more"></i>Inventory Items</a></li>
+              <li><a href=""><i class="ti-more"></i>SMS Integration</a></li>
              
             </ul>
         </li>
