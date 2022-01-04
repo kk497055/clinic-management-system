@@ -71,8 +71,18 @@ class AppointmentController extends Controller
         return redirect()->route('appointments.view')->with($notification);
     }
 
+    public function AppointmentCalendar() {
+        
+        return view('backend.operations.calendar_appointment');
+    }
+
+    public function AppointmentCalendarDisplay() {
+        $data = Appointment::with(['branch_info'])->with(['priority_info'])->orderBy('start', 'asc')->get(['title','start', 'end', 'notes']);
+        return response()->json($data, status:200);
+    }
+
     public function AppointmentView() {
-        $data['allData'] = Appointment::with(['branch_info'])->with(['priority_info'])->orderBy('appointment_start', 'asc')->get();
+        $data['allData'] = Appointment::with(['branch_info'])->with(['priority_info'])->orderBy('start', 'asc')->get();
         return view('backend.operations.view_appointment', $data);
     }
 
@@ -87,12 +97,13 @@ class AppointmentController extends Controller
         ]);
 
         $appointment = New Appointment();
-        $appointment->patient_name = $request->name;
+        $appointment->title = $request->name;
         $appointment->mobile = $request->mobile;
         $appointment->branch_id = $request->branch_id;
         $appointment->service_category = $request->service_category;
-        $appointment->appointment_start = date('Y-m-d H:i:s', strtotime($request->appointment_date));
+        $appointment->start = date('Y-m-d H:i:s', strtotime($request->appointment_date));
         $appointment->appointment_duration = 30;
+        $appointment->end = date('Y-m-d H:i',strtotime('+30 minutes',strtotime($request->appointment_date)));
         $appointment->created_by = Auth::user()->id;
         $appointment->status ="Pending";
         $appointment->notes = $request->notes;

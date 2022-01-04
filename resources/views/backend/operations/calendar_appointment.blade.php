@@ -12,8 +12,12 @@
         <div class="box">
 			<div class="box-header with-border">
 			  <h4 class="box-title">Appointments Calendar</h4>
+              <a href="{{route('appointments.view')}}" style="float: right;" class="btn btn-rounded btn-info mb-5">
+                List View
+            </a>
 			  <h6 class="box-subtitle">view patient appointments <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">Seek Help </a></h6>
-			</div>
+              
+            </div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
@@ -28,5 +32,6 @@
       
       </div>
   </div>
+  
 
   @endsection

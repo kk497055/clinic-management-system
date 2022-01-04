@@ -93,7 +93,34 @@
         });
     });
     </script>
-    
+    <script>
+      $(document).ready(function() {
+
+var calendar = $('#calendar').fullCalendar({
+  editable: true,
+  displayEventTime: true,
+  selectable: true,
+  selectHelper: true,
+  defaultView: 'month',
+  header: {
+    left: 'prev, next today',
+    center: 'title',
+    right: 'month, basicWeek, basicDay'
+  },
+  eventRender: function(eventObj, $el) {
+        $el.popover({
+          title: eventObj.title,
+          content: eventObj.notes,
+          trigger: 'hover',
+          placement: 'top',
+          container: 'body'
+        });
+      },
+  events: "{{route('appointments.calendar.display')}}" 
+      
+  });
+});
+    </script>
     
     
     
@@ -122,6 +149,7 @@
         }
         @endif
         </script> 
+
 
 	
 </body>

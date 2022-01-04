@@ -92,7 +92,8 @@
                 <li><a href="{{route('patients.view')}}"><i class="ti-more"></i>Search Patients</a></li>
                 <li><a href="{{route('patients.add')}}"><i class="ti-more"></i>Register Patients</a></li>
                 <li><a href="{{route('appointments.add')}}"><i class="ti-more"></i>Set up Appointments</a></li>
-                <li><a href="{{route('appointments.view')}}"><i class="ti-more"></i>View Appointments</a></li>
+                <li><a href="{{route('appointments.calendar')}}"><i class="ti-more"></i>Appointments Calendar</a></li>
+                
               
              
             </ul>
