@@ -42,7 +42,7 @@
                           @foreach($allData as $key => $appointment)
                           <tr>
                               <td>{{ $key+1 }}</td>
-                              <td>{{$appointment->patient_name}}</td>
+                              <td>{{$appointment->title}}</td>
                               <td>{{$appointment->mobile}}</td>
                               <td>{{$appointment['priority_info']['name']}}</td>
                               <td>{{$appointment['branch_info']['branch_name']}}</td>
@@ -52,7 +52,7 @@
                               @endif
                               <td>{{$appointment->notes}}</td>
                               <td><a href="{{route('appointments.edit', $appointment->id)}}" class="btn btn-info">EDIT</a>
-                                <a href="" class="btn btn-primary">Complete</a></td>
+                                <a href="{{route('appointments.complete', $appointment->id)}}" class="btn btn-primary">Complete</a></td>
                               
                           </tr>
                           @endforeach

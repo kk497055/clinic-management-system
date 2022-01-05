@@ -11,21 +11,21 @@
 
         <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Schedule New Appointments</h4>
+			  <h4 class="box-title">Complete Appointments</h4>
 			  <h6 class="box-subtitle">Schedule patient appointments <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">Seek Help </a></h6>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="POST" action="{{route('appointments.update', $editData->id)}}">
+					<form method="POST" action="{{route('appointments.complete.store', $editData->id)}}">
                         @csrf
 					  <div class="row">
 						<div class="col-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <h5>Patient Name <span class="text-danger">*</span></h5>
+                                        <h5>Appointment Was For: <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="name" id="name" class="form-control" required value="{{$editData->title}}"> </div>
                                         
@@ -80,6 +80,24 @@
                                         
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h5>Link Patient MR No <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <select name="patient_id" id="patient_id" required class="form-control">
+                                                <option value="">Select MR NO</option>
+                                                @foreach($patients as $patient)
+                                                <option value="{{$patient->id}}">{{$patient->mr_no." - ".$patient->name." - ".$patient->mobile}}</option>
+                                                @endforeach
+                                                
+                                            </select>
+                                        </div>
+                                        <br />
+                                        <a href="={{route('patients.add')}}" style="float: right;" data-toggle="modal" class="btn btn-rounded btn-primary mb-5">
+                                            Register New Patient
+                                        </a>
+                                    </div>
+                                </div> 
                             </div> 
                             <div class="row">
                                 <div class="col-md-6">
@@ -98,7 +116,7 @@
 						
 					
 						<div class="text-xs-right">
-							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
+							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Complete Appointment">
 						</div>
 					</form>
 
@@ -115,5 +133,6 @@
       
       </div>
   </div>
-
+  
+  
   @endsection

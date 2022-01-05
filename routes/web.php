@@ -158,5 +158,7 @@ Route::prefix('operations')->group(function(){
     Route::get('/appointments/edit/{id}', [AppointmentController::class, 'AppointmentEdit'])->name('appointments.edit');
     Route::post('/appointments/update/{id}', [AppointmentController::class, 'AppointmentUpdate'])->name('appointments.update');
     Route::post('/appointments/store', [AppointmentController::class, 'AppointmentStore'])->name('appointments.store');
+    Route::get('/appointments/complete/{id}', [AppointmentController::class, 'AppointmentComplete'])->name('appointments.complete');
+    Route::post('/appointments/complete/store/{id}', [AppointmentController::class, 'AppointmentCompleteStore'])->name('appointments.complete.store');
 
 });
