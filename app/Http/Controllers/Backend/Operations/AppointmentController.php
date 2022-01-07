@@ -10,7 +10,10 @@ use App\Models\User;
 use App\Models\PatientDetail;
 use App\Models\City;
 use App\Models\Appointment;
+use App\Models\ServiceFeeAmount;
 use App\Models\PatientAppointment;
+use App\Models\PatientVisit;
+use App\Models\PatientServiceCharge;
 use Auth;
 use DB;
 use PDF;
@@ -125,8 +128,9 @@ class AppointmentController extends Controller
         $data['editData'] = Appointment::find($id);
         $data['branches'] = Branch::all();
         $data['cities'] = City::all();
+        $data['service_priorities'] = ServiceFeeCategory::all();
         $data['patients'] = User::join('patient_details', 'user_id', 'id')->where('role', 'Patient')->get();
-        $data['service_categories'] = ServiceFeeCategory::all();
+        $data['service_categories'] = ServiceFeeAmount::with(['service_fee_main'])->with(['service_fee_category'])->where('service_fee_amounts.service_category_id', $data['editData']->service_category)->get();
         
         return view('backend.operations.complete_appointment', $data);
         
@@ -163,6 +167,30 @@ class AppointmentController extends Controller
         $appointment->created_by = Auth::user()->id;
         $appointment->status = "Completed";
         $appointment->save();
+
+        $visit = New PatientVisit();
+        $visit->chief_complaint = $request->chief_complaint;
+        $visit->diagnosis = $request->diagnosis;
+        $visit->recommendation = $request->recommendation;
+        $visit->patient_appointment_id = $appointment->id;
+        $visit->created_by = Auth::user()->id;
+        $visit->save();
+
+        $count_items = count($request->quantity);
+
+        if ($count_items != NULL) {
+            for($i=0;$i<$count_items;$i++) {
+                $inv = New PatientServiceCharge();
+                    $inv->patient_visit_id = $visit->id ;
+                    $inv->service_category_id = $request->service_category_id[$i];
+                    $inv->quantity = $request->quantity[$i];
+                    $inv->service_amount = $request->amount[$i];
+                    $inv->created_by = Auth::user()->id;
+                    //$inv->gross_line_total = $request->gross_line_total[$i];
+                    $inv->save();
+
+            }
+        }
 
         $notification = array(
             'message' => 'Appointment completed successfully',

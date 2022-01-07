@@ -14,4 +14,6 @@ class ServiceFeeAmount extends Model
     public function service_fee_main(){
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
+
+    
 }
